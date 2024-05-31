@@ -12,7 +12,7 @@ interface: QueuingInterface = QueuingInterface()
 server: SyncServer = SyncServer(default_interface=interface)
 
 
-API_PREFIX = "/api"
+API_PREFIX = "/memgpt_api"
 
 password = secrets.token_urlsafe(16)
 typer.secho(

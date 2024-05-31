@@ -100,11 +100,6 @@ class MemGPTConfig:
     metadata_storage_path: str = MEMGPT_DIR
     metadata_storage_uri: str = None
 
-    # database configs: agent state
-    persistence_manager_type: str = None  # in-memory, db
-    persistence_manager_save_file: str = None  # local file
-    persistence_manager_uri: str = None  # db URI
-
     def save(self):
         config = configparser.ConfigParser()
 

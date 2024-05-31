@@ -10,7 +10,7 @@ DEFAULT_PRESET = "memgpt_chat"
 
 LLM_MAX_TOKENS = {
     "DEFAULT": 8192,
-    "llama3": 8192,
+    "llama3-8b-8192": 8192,
 }
 
 CORE_MEMORY_PERSONA_CHAR_LIMIT = 2000
@@ -27,7 +27,7 @@ MAX_PAUSE_HEARTBEATS = 360  # in min
 RETRIEVAL_QUERY_DEFAULT_PAGE_SIZE = 5
 JSON_LOADS_STRICT = False
 
-MESSAGE_CHATGPT_FUNCTION_MODEL = "llama3:latest"
+MESSAGE_CHATGPT_FUNCTION_MODEL = "llama3-8b-8192"
 MESSAGE_CHATGPT_FUNCTION_SYSTEM_MESSAGE = (
     "You are a helpful assistant. Keep your responses short and concise."
 )

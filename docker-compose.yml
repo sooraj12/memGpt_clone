@@ -1,11 +1,24 @@
-version: '3.9'
+version: "3.9"
 
 services:
+  memgpt_server:
+    container_name: memgpt_server
+    image: memgpt/backend
+    build:
+      context: ./llm_memory
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "8091:8080"
+    depends_on:
+      - memgpt_pgdb
+    networks:
+      - chat_network
 
-  frontend:
+  memgpt_frontend:
     container_name: memgpt_frontend
     image: memgpt/frontend
-    build: 
+    build:
       context: ./llm_memory_ui
       dockerfile: ./Dockerfile
     restart: always
@@ -13,8 +26,10 @@ services:
       - "8090:80"
     volumes:
       - ./configs:/etc/nginx/conf.d
+    networks:
+      - chat_network
 
-  db:
+  memgpt_pgdb:
     container_name: memgpt_pgdb
     # image: pgvector/pgvector:pg16
     image: ankane/pgvector:v0.5.1
@@ -26,8 +41,13 @@ services:
       - pgdata_memgpt:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
+    networks:
+      - chat_network
 
 volumes:
   pgdata_memgpt:
+    external: true
+
+networks:
+  chat_network:
     external: true

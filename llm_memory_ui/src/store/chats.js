@@ -55,7 +55,7 @@ const chatsStore = (set, get) => ({
       });
       try {
         await fetchEventSource(
-          "/api/agents/aba956c8-784d-4bcb-aaad-aa4cb17861af/message",
+          "/memgpt_api/agents/aba956c8-784d-4bcb-aaad-aa4cb17861af/message",
           {
             method: "POST",
             headers: {

@@ -23,7 +23,7 @@ COPY . .
 RUN useradd -m appuser
 USER appuser
 
-EXPOSE 8086
+EXPOSE 8080
 
 ENTRYPOINT [ "/venv/bin/python" ]
 CMD [ "rest_server.py" ]
