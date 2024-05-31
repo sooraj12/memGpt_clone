@@ -55,7 +55,7 @@ const chatsStore = (set, get) => ({
       });
       try {
         await fetchEventSource(
-          "http://localhost:8080/api/agents/aba956c8-784d-4bcb-aaad-aa4cb17861af/message",
+          "/api/agents/aba956c8-784d-4bcb-aaad-aa4cb17861af/message",
           {
             method: "POST",
             headers: {

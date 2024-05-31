@@ -13,28 +13,21 @@ services:
       - "8090:80"
     volumes:
       - ./configs:/etc/nginx/conf.d
-    networks:
-      - chat_network
-    # depends_on:
-    #   - backend
 
-  # db:
-  #   image: pgvector/pgvector:pg16
-  #   ports:
-  #     - 5434:5432
-  #   restart: always
-  #   environment:
-  #     - POSTGRES_PASSWORD=admin
-  #     - POSTGRES_USER=admin
-  #     - POSTGRES_DB=memgpt
-  #   volumes:
-  #     - pgdata_memgpt:/var/lib/postgresql/data
+  db:
+    container_name: memgpt_pgdb
+    # image: pgvector/pgvector:pg16
+    image: ankane/pgvector:v0.5.1
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=memgpt
+    volumes:
+      - pgdata_memgpt:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 
-networks:
-  chat_network:
+volumes:
+  pgdata_memgpt:
     external: true
-
-# volumes:
-#   pgdata_memgpt:
-#     external: true
