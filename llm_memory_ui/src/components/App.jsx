@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <ChatPage />,
   },
-]);
+], {basename: '/memgpt'});
 
 function App() {
   return (

@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+
+  frontend:
+    container_name: memgpt_frontend
+    image: memgpt/frontend
+    build: 
+      context: ./llm_memory_ui
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "8090:80"
+    volumes:
+      - ./configs:/etc/nginx/conf.d
+    networks:
+      - chat_network
+    # depends_on:
+    #   - backend
+
+  # db:
+  #   image: pgvector/pgvector:pg16
+  #   ports:
+  #     - 5434:5432
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_PASSWORD=admin
+  #     - POSTGRES_USER=admin
+  #     - POSTGRES_DB=memgpt
+  #   volumes:
+  #     - pgdata_memgpt:/var/lib/postgresql/data
+
+
+networks:
+  chat_network:
+    external: true
+
+# volumes:
+#   pgdata_memgpt:
+#     external: true
