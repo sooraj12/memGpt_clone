@@ -1,9 +1,7 @@
 import { useCallback } from "react";
 import styled from "@emotion/styled";
-import { Burger, Button } from "@mantine/core";
+import { Burger } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
-import { useGlobalStore } from "../store/useGlobalStore";
-import { useShallow } from "zustand/react/shallow";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -83,29 +81,19 @@ const HeaderContainer = styled.div`
   }
 `;
 
-function HeaderButton({ icon, onClick, children }) {
-  return (
-    <Button size="xs" variant="subtle" onClick={onClick}>
-      {icon && <i className={"fa fa-" + icon} />}
-      {children && <span>{children}</span>}
-    </Button>
-  );
-}
+// function HeaderButton({ icon, onClick, children }) {
+//   return (
+//     <Button size="xs" variant="subtle" onClick={onClick}>
+//       {icon && <i className={"fa fa-" + icon} />}
+//       {children && <span>{children}</span>}
+//     </Button>
+//   );
+// }
 
 function Header() {
-  const { setTab } = useGlobalStore(
-    useShallow((state) => ({
-      setTab: state.settings.setTab,
-    }))
-  );
-
   const onNewChat = useCallback(async () => {
     setTimeout(() => document.querySelector("#message-input")?.focus(), 100);
   }, []);
-
-  const openSettings = useCallback(() => {
-    setTab("chat");
-  }, [setTab]);
 
   useHotkeys([["n", onNewChat]]);
 
@@ -114,7 +102,6 @@ function Header() {
       <Burger />
       <h2>MemoryAgent</h2>
       <div className="spacer" />
-      <HeaderButton icon="gear" onClick={openSettings} />
     </HeaderContainer>
   );
 }

@@ -3,7 +3,6 @@ import { Button, CopyButton, Loader } from "@mantine/core";
 
 import { Markdown } from "./Markdown";
 import { useCallback, useMemo } from "react";
-import { useOption } from "../hooks";
 
 function formatUnixTimestamp(unixTimestamp) {
   const date = new Date(unixTimestamp * 1000); // Convert Unix timestamp to milliseconds
@@ -232,8 +231,6 @@ function InlineLoader() {
 // id
 // date
 function Message({ message, last }) {
-  const [katex] = useOption("markdown", "katex");
-
   const getRoleName = useCallback((role) => {
     switch (role) {
       case "user":
@@ -288,7 +285,7 @@ function Message({ message, last }) {
           </div>
           <Markdown
             content={message.content}
-            katex={katex}
+            katex={true}
             className={"content content-" + message.id}
           />
         </div>

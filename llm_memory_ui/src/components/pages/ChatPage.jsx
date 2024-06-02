@@ -2,7 +2,6 @@ import React, { Suspense, useCallback } from "react";
 import styled from "@emotion/styled";
 import { useEffect } from "react";
 import { Loader } from "@mantine/core";
-import { useOption } from "../../hooks";
 import { Page } from "../Page";
 import { Message } from "../Message";
 import { useGlobalStore } from "../../store/useGlobalStore";
@@ -39,14 +38,8 @@ function ChatPage() {
     }))
   );
 
-  const [autoScrollWhenOpeningChat] = useOption(
-    "auto-scroll",
-    "auto-scroll-when-opening-chat"
-  );
-  const [autoScrollWhileGenerating] = useOption(
-    "auto-scroll",
-    "auto-scroll-while-generating"
-  );
+  const autoScrollWhenOpeningChat = true;
+  const autoScrollWhileGenerating = true;
 
   useEffect(() => {
     const shouldScroll = autoScrollWhenOpeningChat;

@@ -1,4 +1,3 @@
-import { ChatManager } from "../core/chatManager";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
 import { v4 as uuid } from "uuid";
 
@@ -23,7 +22,6 @@ const chatsStore = (set, get) => ({
       // },
     ],
     generating: false,
-    chatManager: new ChatManager(),
 
     setMessage: (msg) => {
       set((state) => {

@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Header } from "./Header";
 import { MessageInput } from "./MessageInput";
-import { SettingsDrawer } from "./SettingsDrawer";
 
 const Container = styled.div`
   position: absolute;
@@ -70,7 +69,6 @@ function Page({ id, children }) {
         {children}
 
         <MessageInput key={1} />
-        <SettingsDrawer />
       </Main>
     </Container>
   );

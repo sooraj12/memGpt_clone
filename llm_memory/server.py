@@ -353,8 +353,8 @@ class SyncServer(LockingServer):
             else:
                 break
 
+        print("Finished agent step")
         memgpt_agent.interface.step_yield()
-        logger.debug("Finished agent step")
 
         return tokens_accumulated
 

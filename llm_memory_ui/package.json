@@ -36,7 +36,7 @@
     "zustand": "^4.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PUBLIC_URL='/memgpt' react-scripts start",
     "build": "PUBLIC_URL='/memgpt' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

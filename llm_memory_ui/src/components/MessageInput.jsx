@@ -3,7 +3,6 @@ import { Button, ActionIcon, Textarea, Loader } from "@mantine/core";
 import { getHotkeyHandler, useMediaQuery } from "@mantine/hooks";
 import { useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { useOption } from "../hooks";
 import { useGlobalStore } from "../store/useGlobalStore";
 import { useShallow } from "zustand/react/shallow";
 
@@ -39,7 +38,7 @@ function MessageInput(props) {
 
   const hasVerticalSpace = useMediaQuery("(min-height: 1000px)");
 
-  const [submitOnEnter] = useOption("input", "submit-on-enter");
+  const submitOnEnter = true;
 
   const onChange = useCallback(
     (e) => {
